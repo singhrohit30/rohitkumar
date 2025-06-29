@@ -7,7 +7,8 @@ const app = express();
 
 // Enable CORS — allow your frontend to call APIs
 app.use(cors({
-  origin: "*", // Or restrict to your GitHub Pages domain if you want
+  origin: "https://singhrohit30.github.io",
+  credentials: true, // Or restrict to your GitHub Pages domain if you want
 }));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
