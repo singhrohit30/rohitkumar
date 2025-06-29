@@ -1,0 +1,212 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 210 11% 98%;
+  --foreground: 220 14% 4%;
+  --muted: 220 14% 96%;
+  --muted-foreground: 220 9% 46%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 220 14% 4%;
+  --card: 0 0% 100%;
+  --card-foreground: 220 14% 4%;
+  --border: 220 13% 91%;
+  --input: 220 13% 91%;
+  --primary: 213 94% 68%;
+  --primary-foreground: 0 0% 98%;
+  --secondary: 220 14% 96%;
+  --secondary-foreground: 220 9% 10%;
+  --accent: 213 94% 68%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 213 94% 68%;
+  --radius: 0.5rem;
+  
+  /* Portfolio specific colors - Light Mode */
+  --portfolio-primary: 210 11% 98%; /* #F5F7FA */
+  --portfolio-secondary: 220 14% 96%; /* #F1F5F9 */
+  --portfolio-accent: 213 94% 68%; /* #3B82F6 */
+  --portfolio-text-primary: 220 14% 4%; /* #0F172A */
+  --portfolio-text-muted: 215 14% 46%; /* #64748B */
+}
+
+.dark {
+  --background: 222 84% 5%;
+  --foreground: 210 40% 98%;
+  --muted: 215 28% 17%;
+  --muted-foreground: 215 14% 54%;
+  --popover: 222 84% 5%;
+  --popover-foreground: 210 40% 98%;
+  --card: 222 84% 5%;
+  --card-foreground: 210 40% 98%;
+  --border: 215 28% 17%;
+  --input: 215 28% 17%;
+  --primary: 213 94% 68%;
+  --primary-foreground: 210 40% 98%;
+  --secondary: 215 28% 17%;
+  --secondary-foreground: 210 40% 98%;
+  --accent: 213 94% 68%;
+  --accent-foreground: 210 40% 98%;
+  --destructive: 0 63% 31%;
+  --destructive-foreground: 210 40% 98%;
+  --ring: 213 94% 68%;
+
+  /* Portfolio specific colors - Dark Mode */
+  --portfolio-primary: 222 84% 5%; /* #0F172A */
+  --portfolio-secondary: 215 28% 17%; /* #1E293B */
+  --portfolio-accent: 213 94% 68%; /* #3B82F6 */
+  --portfolio-text-primary: 210 40% 98%; /* #F8FAFC */
+  --portfolio-text-muted: 215 14% 54%; /* #64748B */
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased;
+    background: hsl(var(--portfolio-primary));
+    color: hsl(var(--portfolio-text-primary));
+    font-family: 'Inter', sans-serif;
+    scroll-behavior: smooth;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  .portfolio-bg-primary {
+    background-color: hsl(var(--portfolio-primary));
+  }
+  
+  .portfolio-bg-secondary {
+    background-color: hsl(var(--portfolio-secondary));
+  }
+  
+  .portfolio-text-primary {
+    color: hsl(var(--portfolio-text-primary));
+  }
+  
+  .portfolio-text-muted {
+    color: hsl(var(--portfolio-text-muted));
+  }
+  
+  .portfolio-accent {
+    color: hsl(var(--portfolio-accent));
+  }
+  
+  .portfolio-bg-accent {
+    background-color: hsl(var(--portfolio-accent));
+  }
+}
+
+/* Custom animations */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: none;
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+.animate-fadeInUp {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-slideInLeft {
+  animation: slideInLeft 0.6s ease-out;
+}
+
+.animate-slideInRight {
+  animation: slideInRight 0.6s ease-out;
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2s infinite;
+}
+
+/* Navigation styles */
+.nav-link {
+  position: relative;
+  transition: all 0.3s ease;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background: hsl(var(--portfolio-accent));
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link.active::after {
+  width: 100%;
+}
+
+/* Skill bar animation */
+.skill-bar {
+  transition: width 1.5s ease-in-out;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: hsl(var(--portfolio-primary));
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--portfolio-accent));
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--portfolio-accent) / 0.8);
+}
